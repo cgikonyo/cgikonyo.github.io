@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Favicon -->
-    <link rel="icon" href="c:\Users\Njambi\Downloads\360_F_999314543_KxCLlafnV9O1b8Ux4OT1c2ru6LuH8vsZ.jpg" type="image/x-icon">
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.jpg" type="image/x-icon">
   <title>Vous et Moi❤️</title>
   <style>
     /* General page styling */
     body {
       font-family: 'Lucida Calligraphy', cursive;
-      background-color:black;
+      background-color: black;
       color: white;
       margin: 0;
       padding: 0;
@@ -68,16 +68,28 @@
       font-weight: bold;
       margin-right: 5px;
     }
-    /* styling for the playlist controls*/
+
+    /* Styling for the playlist controls */
+    audio {
+      width: 100%;
+      margin-top: 20px;
+    }
+
     button {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #ddd;
-        }
+      background-color: black;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: white;
+      color: black;
+    }
   </style>
 </head>
 <body>
@@ -87,72 +99,60 @@
 
   <!-- Introduction Paragraph -->
   <p class="intro">
-    <span>'V</span>ous et Moi', meaning of "You and I❤️. 
-    Oh, and I made a small playlist with some of your favorite songs to listen while at it ml❤️. Enjoy!! 😊❤️
+    <span>'V</span>ous et Moi', meaning "You and I❤️." 
+    Oh, and I made a small playlist with some of your favorite songs to listen to while at it ml❤️. Enjoy!! 😊❤️
   </p>
-  <audio id ="audioPlayer"controls>
-    <source src="audio/Fridayy - When It Comes To You.mp3" type="audio/mpeg">
-           <source src="audio/Mariah the Scientist - Always n Forever (ft. Lil Baby).mp3" type="audio/mpeg">
-          <source src="audio/Frank Ocean - White Ferrari.mp3" type="audio/mpeg">
-           <source src="audio/pink-matter-128-ytshorts.savetube.me.mp3" type="audio/mpeg">
-           <source src="audio/ytmp3free.cc_miguel-sure-thing-official-video-youtubemp3free.org.mp3" type="audio/mpeg">
-           <source src="audio/bazzi-eyes-lyrics-128-ytshorts.savetube.me.mp3" type="audio/mpeg">
-               </audio>
-   <div>
-                <button id="prevButton">Previous</button>
-                <button id="nextButton">Next</button>
-            </div>
-        
-<script>
-// List of songs in the playlist
-const songs = [
-    "audio/Fridayy - When It Comes To You.mp3",
-    "audio/Mariah the Scientist - Always n Forever (ft. Lil Baby).mp3",
-     "audio/Frank Ocean - White Ferrari.mp3" ,
-    "audio/pink-matter-128-ytshorts.savetube.me.mp3",
-    "audio/ytmp3free.cc_miguel-sure-thing-official-video-youtubemp3free.org.mp3",
-    "audio/bazzi-eyes-lyrics-128-ytshorts.savetube.me.mp3"
-];
 
-let currentSongIndex = 0; // Index of the currently playing song
-const audioPlayer = document.getElementById("audioPlayer");
-const prevButton = document.getElementById("prevButton");
-const nextButton = document.getElementById("nextButton");
+  <!-- Audio Player and Controls -->
+  <audio id="audioPlayer" controls></audio>
+  <div>
+    <button id="prevButton">Previous</button>
+    <button id="nextButton">Next</button>
+  </div>
 
-// Function to load a song based on the index
-function loadSong(index) {
-    audioPlayer.src = songs[index]; // Update the audio source
-    audioPlayer.play(); // Play the new song
-}
+  <script>
+    // List of songs
+    const songs = [
+      "audio/Fridayy - When It Comes To You.mp3",
+      "audio/Mariah the Scientist - Always n Forever (ft. Lil Baby).mp3",
+      "audio/Frank Ocean - White Ferrari.mp3",
+      "audio/pink-matter-128-ytshorts.savetube.me.mp3",
+      "audio/ytmp3free.cc_miguel-sure-thing-official-video-youtubemp3free.org.mp3",
+      "audio/bazzi-eyes-lyrics-128-ytshorts.savetube.me.mp3"
+    ];
 
-// Event listener for the Next button
-nextButton.addEventListener("click", () => {
-    currentSongIndex++;
-    if (currentSongIndex >= songs.length) {
-        currentSongIndex = 0; // Loop back to the first song
+    // Initialize variables
+    let currentSongIndex = 0;
+    const audioPlayer = document.getElementById("audioPlayer");
+    const prevButton = document.getElementById("prevButton");
+    const nextButton = document.getElementById("nextButton");
+
+    // Load the first song initially
+    function loadSong(index) {
+      audioPlayer.src = songs[index];
+      audioPlayer.play();
     }
-    loadSong(currentSongIndex);
-});
 
-// Event listener for the Previous button
-prevButton.addEventListener("click", () => {
-    currentSongIndex--;
-    if (currentSongIndex < 0) {
-        currentSongIndex = songs.length - 1; // Go to the last song
-    }
-    loadSong(currentSongIndex);
-});
+    // Event listeners for navigation buttons
+    nextButton.addEventListener("click", () => {
+      currentSongIndex = (currentSongIndex + 1) % songs.length; // Loop to the beginning
+      loadSong(currentSongIndex);
+    });
 
-// Automatically play the next song when the current song ends
-audioPlayer.addEventListener("ended", () => {
-    currentSongIndex++;
-    if (currentSongIndex >= songs.length) {
-        currentSongIndex = 0; // Restart the playlist
-    }
+    prevButton.addEventListener("click", () => {
+      currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length; // Loop to the end
+      loadSong(currentSongIndex);
+    });
+
+    // Auto-play the next song when the current one ends
+    audioPlayer.addEventListener("ended", () => {
+      currentSongIndex = (currentSongIndex + 1) % songs.length;
+      loadSong(currentSongIndex);
+    });
+
+    // Load the first song initially
     loadSong(currentSongIndex);
-}); 
   </script>
-
 
   <!-- First Paragraph with image on the left -->
   <div class="para1">
@@ -165,9 +165,9 @@ audioPlayer.addEventListener("ended", () => {
 
   <!-- Second Paragraph with image on the right -->
   <div class="para2">
-    <img src="images/image2.jpeg" alt=" Image 2">
+    <img src="images/image2.jpeg" alt="Image 2">
     <p>
-      <span>O</span>ur first meetup on 6th October marked the genesis of thi amazing life that we share. It  was love at first sight when I finally laid my eyes on you. 
+      <span>O</span>ur first meetup on 6th October marked the genesis of this amazing life that we share. It was love at first sight when I finally laid my eyes on you. 
       Your lethal face card, your sweet smile, and your eyes that spoke volumes—how they glittered gracefully under the afternoon rays. I got lost in them. Taking it all in took my breath away. ❤️
       It was one hell of a view. A view that I told myself I'd love to see for the rest of my life.❤️
     </p>
@@ -179,22 +179,19 @@ audioPlayer.addEventListener("ended", () => {
     <p>
       <span>I</span> fell in love with your beauty, but I fell deeper for the other things about you as the days went by. I love your smile and vow to do everything in my power to keep it on your face forever. I love your energetic yapping😂❤️—how you can talk for hours without rest, how your face lights up when you talk about things you love.
       I love how your eyes glitter with joy and excitement, filling my heart with warmth. ❤️ I love your kindness and how you care about me every day. I love your way of thinking, how you approach certain topics, It is so attractive and one can only admire your logical way of doing things.❤️
-      You motivate me to be a better person and partner.I feel so blessed to have you, to call you mine.❤️
+      You motivate me to be a better person and partner. I feel so blessed to have you, to call you mine.❤️
     </p>
   </div>
 
   <!-- Fourth Paragraph with image on the right -->
   <div class="para4">
-    <img src="images/image4.jpeg" alt=" Image 4">
+    <img src="images/image4.jpeg" alt="Image 4">
     <p>
-      <span>A</span>nd yet, there's so much more to love about you. We are still learning about one another. We come from different upbringings, grew up in difffrent envrionments, we have different pasts and all of these have shaped and influenced our lives. 
-      We are still learning how to love one another. It doesn't work out quickly and perfectly like in the movies or the way we often imagine. To get to the rose flower you have to go through the thorns, nothing clicks immediately, we are gonna have compromises, arguments will be there but it's from those arguments that we learn how to love one another and to creare an understanding between one another and most importantly adapt to one another❤️. But for this to happen it has to come from the two of us. It has to come with effort and commitment from one another mami❤️.
-      Indiffrences have been there but we have always managed to solve them in a healthy way my love.❤️. We are young and we do not know what the future holds for us, but I always pray to God that He may keep us bound for He was the one who brought us together,(Mark 10:9❤️)I pray to God  about us , I talk to God about you. I hope you do the same. 
-      I might not be able to get you the finest things in life,I may noy be able to fly you out for vacations, I am not yet a rich partner but I'll always do my best to make you happy mami. You gave me a chance with your heart , all I'm asking for is a chance at life as well and I promise you I'll give my all to make sure you live the life you always wanted.❤️
-      You’ve brought endless joy and meaning to my life, and I’ll cherish every moment we share. I pray that we may stay together and not give up on each other. I'd rather have have the rainy days with you than enjoy the sunny days with someone else. 
+      <span>A</span>nd yet, there's so much more to love about you. We are still learning about one another. We come from different upbringings, grew up in different environments, we have different pasts, and all of these have shaped and influenced our lives. 
+      We are still learning how to love one another. It doesn't work out quickly and perfectly like in the movies or the way we often imagine. To get to the rose flower, you have to go through the thorns; nothing clicks immediately. We are going to have compromises and arguments, but it's from those arguments that we learn how to love one another and to create an understanding between us and, most importantly, adapt to one another❤️.
       Thank you for being the love of my life.❤️
        Love, 
-      Your Boyfriend, future husband and father to our kids❤️
+      Your Boyfriend, future husband, and father to our kids❤️
       Clinton.❤️
     </p>
   </div>

@@ -125,52 +125,51 @@
     </button>
   </div>
 
-  <script>
-    // List of songs
+<script>
     const songs = [
       "audio/Fridayy - When It Comes To You.mp3",
       "audio/Mariah the Scientist - Always n Forever (ft. Lil Baby).mp3",
       "audio/Frank Ocean - White Ferrari.mp3",
       "audio/pink-matter-128-ytshorts.savetube.me.mp3",
       "audio/ytmp3free.cc_miguel-sure-thing-official-video-youtubemp3free.org.mp3",
-      "audio/bazzi-eyes-lyrics-128-ytshorts.savetube.me.mp3" ,
-      "audio/api5.canehill.info - Summer Walker - Tonight [Official Audio].mp3" ,
+      "audio/bazzi-eyes-lyrics-128-ytshorts.savetube.me.mp3",
+      "audio/api5.canehill.info - Summer Walker - Tonight [Official Audio].mp3",
       "audio/SZA - Open Arms (ft. Travis Scott).mp3"
     ];
 
-    // Initialize variables
     let currentSongIndex = 0;
     const audioPlayer = document.getElementById("audioPlayer");
     const prevButton = document.getElementById("prevButton");
     const nextButton = document.getElementById("nextButton");
 
-    // Load the first song initially
     function loadSong(index) {
-      audioPlayer.src = songs[index];
-      audioPlayer.play();
+      if (index >= 0 && index < songs.length) {
+        audioPlayer.src = songs[index];
+        audioPlayer.play();
+      }
     }
 
-    // Event listeners for navigation buttons
     nextButton.addEventListener("click", () => {
-      currentSongIndex = (currentSongIndex + 1) % songs.length; // Loop to the beginning
+      currentSongIndex = (currentSongIndex + 1) % songs.length;
       loadSong(currentSongIndex);
     });
 
     prevButton.addEventListener("click", () => {
-      currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length; // Loop to the end
+      currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
       loadSong(currentSongIndex);
     });
 
-    // Auto-play the next song when the current one ends
     audioPlayer.addEventListener("ended", () => {
       currentSongIndex = (currentSongIndex + 1) % songs.length;
       loadSong(currentSongIndex);
     });
 
-    // Load the first song initially
     loadSong(currentSongIndex);
   </script>
 
+  <!-- Content omitted for brevity -->
+</body>
+</html>
   <!-- First Paragraph with image on the left -->
   <div class="para1">
     <img src="images/image1.jpeg" alt="Image 1">

@@ -126,7 +126,7 @@
   </div>
 
 <script>
-    const songs = [
+  const songs = [
       "audio/Fridayy - When It Comes To You.mp3",
       "audio/Mariah the Scientist - Always n Forever (ft. Lil Baby).mp3",
       "audio/Frank Ocean - White Ferrari.mp3",
@@ -135,37 +135,40 @@
       "audio/bazzi-eyes-lyrics-128-ytshorts.savetube.me.mp3",
       "audio/api5.canehill.info - Summer Walker - Tonight [Official Audio].mp3",
       "audio/SZA - Open Arms (ft. Travis Scott).mp3"
-    ];
+  ];
 
-    let currentSongIndex = 0;
-    const audioPlayer = document.getElementById("audioPlayer");
-    const prevButton = document.getElementById("prevButton");
-    const nextButton = document.getElementById("nextButton");
+  let currentSongIndex = 0;
+  const audioPlayer = document.getElementById("audioPlayer");
+  const prevButton = document.getElementById("prevButton");
+  const nextButton = document.getElementById("nextButton");
 
-    function loadSong(index) {
+  function loadSong(index) {
       if (index >= 0 && index < songs.length) {
-        audioPlayer.src = songs[index];
-        audioPlayer.play();
+          audioPlayer.src = songs[index];
+          console.log("Now playing:", songs[index]); // Debugging output
+          audioPlayer.play();
+      } else {
+          console.error("Invalid song index:", index);
       }
-    }
+  }
 
-    nextButton.addEventListener("click", () => {
+  nextButton.addEventListener("click", () => {
       currentSongIndex = (currentSongIndex + 1) % songs.length;
       loadSong(currentSongIndex);
-    });
+  });
 
-    prevButton.addEventListener("click", () => {
+  prevButton.addEventListener("click", () => {
       currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
       loadSong(currentSongIndex);
-    });
+  });
 
-    audioPlayer.addEventListener("ended", () => {
+  audioPlayer.addEventListener("ended", () => {
       currentSongIndex = (currentSongIndex + 1) % songs.length;
       loadSong(currentSongIndex);
-    });
+  });
 
-    loadSong(currentSongIndex);
-  </script>
+  loadSong(currentSongIndex);
+</script>
 
   <!-- Content omitted for brevity -->
 </body>

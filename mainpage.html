@@ -77,7 +77,8 @@
 
   <!-- Introduction Paragraph -->
   <p class="intro">
-    <span>'V</span>ous et Moi', meaning of "You and I❤️. Oh, and I added some of your favorite songs to listen while at it. Enjoy!! 😊❤️
+    <span>'V</span>ous et Moi', meaning of "You and I❤️. 
+    Oh, and I made a small playlist with some of your favorite songs to listen while at it ml❤️. Enjoy!! 😊❤️
   </p>
   <audio controls>
     <source src="audio/Fridayy - When It Comes To You.mp3" type="audio/mpeg">
@@ -86,6 +87,32 @@
            <source src="audio/ytmp3free.cc_miguel-sure-thing-official-video-youtubemp3free.org.mp3" type="audio/mpeg">
            <source src="audio/bazzi-eyes-lyrics-128-ytshorts.savetube.me.mp3" type="audio/mpeg">
                </audio>
+   <ul id="playlist">
+          <li data-src="Fridayy - When It Comes To You.mp3">Song 1 - Artist 1</li>
+          <li data-src="audio/Mariah the Scientist - Always n Forever (ft. Lil Baby).mp3">Song 2 - Artist 2</li>
+          <li data-src="audio/pink-matter-128-ytshorts.savetube.me.mp3">Song 3 - Artist 3</li>
+         <li data-src="audio/ytmp3free.cc_miguel-sure-thing-official-video-youtubemp3free.org.mp3">Song 1 - Artist 1</li>
+         <li data-src="audio/bazzi-eyes-lyrics-128-ytshorts.savetube.me.mp3">Song 1 - Artist 1</li>
+       
+    </ul>
+
+    <script>
+        // Get the audio player and playlist items
+        const audioPlayer = document.getElementById("audioPlayer");
+        const playlist = document.getElementById("playlist");
+
+        // Add a click event listener to each song in the playlist
+        playlist.addEventListener("click", (e) => {
+            if (e.target && e.target.nodeName === "LI") {
+                // Get the audio file from the data-src attribute
+                const songSrc = e.target.getAttribute("data-src");
+                // Change the audio player's source
+                audioPlayer.src = songSrc;
+                // Play the selected song
+                audioPlayer.play();
+            }
+        });
+    </script>
 
   <!-- First Paragraph with image on the left -->
   <div class="para1">

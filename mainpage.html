@@ -68,6 +68,16 @@
       font-weight: bold;
       margin-right: 5px;
     }
+    /* styling for the playlist controls*/
+    button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ddd;
+        }
   </style>
 </head>
 <body>
@@ -87,32 +97,60 @@
            <source src="audio/ytmp3free.cc_miguel-sure-thing-official-video-youtubemp3free.org.mp3" type="audio/mpeg">
            <source src="audio/bazzi-eyes-lyrics-128-ytshorts.savetube.me.mp3" type="audio/mpeg">
                </audio>
-   <ul id="playlist">
-          <li data-src="Fridayy - When It Comes To You.mp3">Song 1 - Artist 1</li>
-          <li data-src="audio/Mariah the Scientist - Always n Forever (ft. Lil Baby).mp3">Song 2 - Artist 2</li>
-          <li data-src="audio/pink-matter-128-ytshorts.savetube.me.mp3">Song 3 - Artist 3</li>
-         <li data-src="audio/ytmp3free.cc_miguel-sure-thing-official-video-youtubemp3free.org.mp3">Song 1 - Artist 1</li>
-         <li data-src="audio/bazzi-eyes-lyrics-128-ytshorts.savetube.me.mp3">Song 1 - Artist 1</li>
-       
-    </ul>
+   <div>
+                <button id="prevButton">Previous</button>
+                <button id="nextButton">Next</button>
+            </div>
+        
+            <script>
+                // List of songs in the playlist
+                const songs = [
+                    "audio/Fridayy - When It Comes To You.mp3",
+                    "audio/Mariah the Scientist - Always n Forever (ft. Lil Baby).mp3",
+                    "audio//pink-matter-128-ytshorts.savetube.me.mp3" ,
+                    "audio/ytmp3free.cc_miguel-sure-thing-official-video-youtubemp3free.org.mp3",
+                     "audio/bazzi-eyes-lyrics-128-ytshorts.savetube.me.mp3"
+                ];
+        
+                let currentSongIndex = 0; // Index of the currently playing song
+                const audioPlayer = document.getElementById("audioPlayer");
+                const prevButton = document.getElementById("prevButton");
+                const nextButton = document.getElementById("nextButton");
+        
+                // Function to load a song based on the index
+                function loadSong(index) {
+                    audioPlayer.src = songs[index];
+                    audioPlayer.play();
+                }
+        
+                // Event listener for the Next button
+                nextButton.addEventListener("click", () => {
+                    currentSongIndex++;
+                    if (currentSongIndex >= songs.length) {
+                        currentSongIndex = 0; // Go back to the first song
+                    }
+                    loadSong(currentSongIndex);
+                });
+        
+                // Event listener for the Previous button
+                prevButton.addEventListener("click", () => {
+                    currentSongIndex--;
+                    if (currentSongIndex < 0) {
+                        currentSongIndex = songs.length - 1; // Go to the last song
+                    }
+                    loadSong(currentSongIndex);
+                });
+        
+                // Automatically play the next song when the current song ends
+                audioPlayer.addEventListener("ended", () => {
+                    currentSongIndex++;
+                    if (currentSongIndex >= songs.length) {
+                        currentSongIndex = 0; // Restart the playlist
+                    }
+                    loadSong(currentSongIndex);
+                });
+            </script>
 
-    <script>
-        // Get the audio player and playlist items
-        const audioPlayer = document.getElementById("audioPlayer");
-        const playlist = document.getElementById("playlist");
-
-        // Add a click event listener to each song in the playlist
-        playlist.addEventListener("click", (e) => {
-            if (e.target && e.target.nodeName === "LI") {
-                // Get the audio file from the data-src attribute
-                const songSrc = e.target.getAttribute("data-src");
-                // Change the audio player's source
-                audioPlayer.src = songSrc;
-                // Play the selected song
-                audioPlayer.play();
-            }
-        });
-    </script>
 
   <!-- First Paragraph with image on the left -->
   <div class="para1">

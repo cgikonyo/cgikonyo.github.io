@@ -125,56 +125,72 @@
       Next <i class="fa fa-arrow-right"></i>
     </button>
   </div>
+<!-- Audio Player and Controls -->
+  <audio id="audioPlayer" controls></audio>
+  <div class="controls">
+    <button id="prevButton">
+      <i class="fa fa-arrow-left"></i> Previous
+    </button>
+    <button id="nextButton">
+      Next <i class="fa fa-arrow-right"></i>
+    </button>
+  </div>
 
 <script>
- const songs = [
-    "audio/Fridayy_When_It_Comes_To_You.mp3" ,
-    "audio/Mariah_The_Scientist_Always_n_Forever_(ft. Lil Baby).mp3" ,
-    "audio/Frank_Ocean_White_Ferrari.mp3" ,
-     "audio/pink_matter.mp3" ,
-    "audio/miguel_sure_thing_official_audio.mp3" ,
-    "audio/Bazzi_Eyes.mp3" ,
-    "audio/Summer_Walker_Tonight_[Official Audio].mp3" ,
-   "audio/SZA_Open_Arms_(Official Audio)_(ft. Travis Scott).mp3"
-   ];
+  // List of songs with corrected names
+  const songs = [
+    "audio/Fridayy_When_It_Comes_To_You.mp3",
+    "audio/Mariah_The_Scientist_Always_n_Forever.mp3",
+    "audio/Frank_Ocean_White_Ferrari.mp3",
+    "audio/Pink_Matter.mp3",
+    "audio/Miguel_Sure_Thing.mp3",
+    "audio/Bazzi_Eyes.mp3",
+    "audio/Summer_Walker_Tonight.mp3",
+    "audio/SZA_Open_Arms.mp3"
+  ];
 
-let currentSongIndex = 0;
-const audioPlayer = document.getElementById("audioPlayer");
-const prevButton = document.getElementById("prevButton");
-const nextButton = document.getElementById("nextButton");
+  let currentSongIndex = 0;
+  const audioPlayer = document.getElementById("audioPlayer");
+  const prevButton = document.getElementById("prevButton");
+  const nextButton = document.getElementById("nextButton");
 
-audioPlayer.volume = 1.0;
+  // Set volume
+  audioPlayer.volume = 1.0;
 
-function loadSong(index) {
+  // Function to load and play a song
+  function loadSong(index) {
     if (index >= 0 && index < songs.length) {
-        audioPlayer.src = songs[index];
-        console.log("Now playing:", audioPlayer.src);
-        audioPlayer.play().catch((error) => {
-            console.error("Playback error:", error);
-        });
+      audioPlayer.src = songs[index];
+      console.log("Now playing:", songs[index]); // Debugging output
+      audioPlayer.play().catch((error) => {
+        console.error("Playback error:", error);
+        alert("Error playing the audio file. Please check the console for details.");
+      });
     } else {
-        console.error("Invalid song index:", index);
+      console.error("Invalid song index:", index);
     }
-}
+  }
 
-nextButton.addEventListener("click", () => {
+  // Event listeners for buttons
+  nextButton.addEventListener("click", () => {
+    currentSongIndex = (currentSongIndex + 1) % songs.length; // Move to next song
+    loadSong(currentSongIndex);
+  });
+
+  prevButton.addEventListener("click", () => {
+    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length; // Move to previous song
+    loadSong(currentSongIndex);
+  });
+
+  // Automatically play the next song when the current one ends
+  audioPlayer.addEventListener("ended", () => {
     currentSongIndex = (currentSongIndex + 1) % songs.length;
     loadSong(currentSongIndex);
-});
+  });
 
-prevButton.addEventListener("click", () => {
-    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-    loadSong(currentSongIndex);
-});
-
-audioPlayer.addEventListener("ended", () => {
-    currentSongIndex = (currentSongIndex + 1) % songs.length;
-    loadSong(currentSongIndex);
-});
-
-loadSong(currentSongIndex);
+  // Load the first song initially
+  loadSong(currentSongIndex);
 </script>
-
   <!-- Content omitted for brevity -->
 </body>
 </html>

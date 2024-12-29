@@ -127,30 +127,29 @@
   </div>
 
 <script>
-  const songs = [
-    "audio/Fridayy - When It Comes To You.mp3",
-    "audio/Mariah the Scientist - Always n Forever (ft. Lil Baby).mp3",
-    "audio/Frank Ocean - White Ferrari.mp3",
-    "audio/pink-matter-128-ytshorts.savetube.me.mp3",
+ const songs = [
+    "audio/Fridayy_When_It_Comes_To_You.mp3",
+    "audio/Mariah_Always_n_Forever.mp3",
+    "audio/Frank_White_Ferrari.mp3",
+     "audio/pink-matter-128-ytshorts.savetube.me.mp3",
     "audio/ytmp3free.cc_miguel-sure-thing-official-video-youtubemp3free.org.mp3",
     "audio/bazzi-eyes-lyrics-128-ytshorts.savetube.me.mp3",
-    "audio/api5.canehill.info - Summer Walker - Tonight [Official Audio].mp3",
-];
+    "audio/api5.canehill.info - Summer Walker - Tonight [Official Audio].mp3"
+    ];
 
 let currentSongIndex = 0;
 const audioPlayer = document.getElementById("audioPlayer");
 const prevButton = document.getElementById("prevButton");
 const nextButton = document.getElementById("nextButton");
 
-// Ensure volume is set
 audioPlayer.volume = 1.0;
 
 function loadSong(index) {
     if (index >= 0 && index < songs.length) {
         audioPlayer.src = songs[index];
-        console.log("Now playing:", audioPlayer.src); // Debugging output
+        console.log("Now playing:", audioPlayer.src);
         audioPlayer.play().catch((error) => {
-            console.error("Audio playback error:", error);
+            console.error("Playback error:", error);
         });
     } else {
         console.error("Invalid song index:", index);
@@ -172,7 +171,6 @@ audioPlayer.addEventListener("ended", () => {
     loadSong(currentSongIndex);
 });
 
-// Initial load
 loadSong(currentSongIndex);
 </script>
 

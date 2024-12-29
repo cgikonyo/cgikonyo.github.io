@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,75 +124,7 @@
       Next <i class="fa fa-arrow-right"></i>
     </button>
   </div>
-<!-- Audio Player and Controls -->
-  <audio id="audioPlayer" controls></audio>
-  <div class="controls">
-    <button id="prevButton">
-      <i class="fa fa-arrow-left"></i> Previous
-    </button>
-    <button id="nextButton">
-      Next <i class="fa fa-arrow-right"></i>
-    </button>
-  </div>
 
-<script>
-  // List of songs with corrected names
-  const songs = [
-    "audio/Fridayy_When_It_Comes_To_You.mp3",
-    "audio/Mariah_The_Scientist_Always_n_Forever.mp3",
-    "audio/Frank_Ocean_White_Ferrari.mp3",
-    "audio/Pink_Matter.mp3",
-    "audio/Miguel_Sure_Thing.mp3",
-    "audio/Bazzi_Eyes.mp3",
-    "audio/Summer_Walker_Tonight.mp3",
-    "audio/SZA_Open_Arms.mp3"
-  ];
-
-  let currentSongIndex = 0;
-  const audioPlayer = document.getElementById("audioPlayer");
-  const prevButton = document.getElementById("prevButton");
-  const nextButton = document.getElementById("nextButton");
-
-  // Set volume
-  audioPlayer.volume = 1.0;
-
-  // Function to load and play a song
-  function loadSong(index) {
-    if (index >= 0 && index < songs.length) {
-      audioPlayer.src = songs[index];
-      console.log("Now playing:", songs[index]); // Debugging output
-      audioPlayer.play().catch((error) => {
-        console.error("Playback error:", error);
-        alert("Error playing the audio file. Please check the console for details.");
-      });
-    } else {
-      console.error("Invalid song index:", index);
-    }
-  }
-
-  // Event listeners for buttons
-  nextButton.addEventListener("click", () => {
-    currentSongIndex = (currentSongIndex + 1) % songs.length; // Move to next song
-    loadSong(currentSongIndex);
-  });
-
-  prevButton.addEventListener("click", () => {
-    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length; // Move to previous song
-    loadSong(currentSongIndex);
-  });
-
-  // Automatically play the next song when the current one ends
-  audioPlayer.addEventListener("ended", () => {
-    currentSongIndex = (currentSongIndex + 1) % songs.length;
-    loadSong(currentSongIndex);
-  });
-
-  // Load the first song initially
-  loadSong(currentSongIndex);
-</script>
-  <!-- Content omitted for brevity -->
-</body>
-</html>
   <!-- First Paragraph with image on the left -->
   <div class="para1">
     <img src="images/image1.jpeg" alt="Image 1">
@@ -235,10 +166,66 @@
       You’ve brought endless joy and meaning to my life, and I’ll cherish every moment we share. I pray that we may stay together and not give up on each other. I'd rather have have the rainy days with you than enjoy the sunny days with someone else. 
       Thank you for being the love of my life.❤️
        Love, 
-      Your Boyfriend, future husband and father to our kids❤️
+      Your Boyfriend, future husband and father to our kids(tihihi🤭)❤️
       Clinton.❤️
     </p>
   </div>
+
+  <script>
+    // List of songs with corrected names
+    const songs = [
+      "audio/Fridayy_When_It_Comes_To_You.mp3",
+      "audio/Mariah_The_Scientist_Always_n_Forever.mp3",
+      "audio/Frank_Ocean_White_Ferrari.mp3",
+      "audio/Pink_Matter.mp3",
+      "audio/Miguel_Sure_Thing.mp3",
+      "audio/Bazzi_Eyes.mp3",
+      "audio/Summer_Walker_Tonight.mp3",
+      "audio/SZA_Open_Arms.mp3"
+    ];
+
+    let currentSongIndex = 0;
+    const audioPlayer = document.getElementById("audioPlayer");
+    const prevButton = document.getElementById("prevButton");
+    const nextButton = document.getElementById("nextButton");
+
+    // Set volume
+    audioPlayer.volume = 1.0;
+
+    // Function to load and play a song
+    function loadSong(index) {
+      if (index >= 0 && index < songs.length) {
+        audioPlayer.src = songs[index];
+        console.log("Now playing:", songs[index]); // Debugging output
+        audioPlayer.play().catch((error) => {
+          console.error("Playback error:", error);
+          alert("Error playing the audio file. Please check the console for details.");
+        });
+      } else {
+        console.error("Invalid song index:", index);
+      }
+    }
+
+    // Event listeners for buttons
+    nextButton.addEventListener("click", () => {
+      currentSongIndex = (currentSongIndex + 1) % songs.length; // Move to next song
+      loadSong(currentSongIndex);
+    });
+
+    prevButton.addEventListener("click", () => {
+      currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length; // Move to previous song
+      loadSong(currentSongIndex);
+    });
+
+    // Automatically play the next song when the current one ends
+    audioPlayer.addEventListener("ended", () => {
+      currentSongIndex = (currentSongIndex + 1) % songs.length;
+      loadSong(currentSongIndex);
+    });
+
+    // Load the first song initially
+    loadSong(currentSongIndex);
+  </script>
 
 </body>
 </html>

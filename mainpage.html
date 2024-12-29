@@ -1,75 +1,223 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon -->
   <link rel="icon" href="images/favicon.jpg" type="image/x-icon">
   <title>Vous et Moi❤️</title>
+  <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* Styling code omitted for brevity (use your existing styles) */
+    /* General page styling */
+    body {
+      font-family: 'Lucida Calligraphy', cursive;
+      background-color: black;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Styling for the title */
+    h1 {
+      text-align: center;
+      font-size: 3em;
+      margin-top: 20px;
+    }
+
+    /* Styling for the introduction paragraph */
+    .intro {
+      margin: 20px;
+      font-size: 1.5em;
+    }
+
+    /* Styling for the paragraphs */
+    p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      margin: 20px;
+      text-align: justify;
+    }
+
+    /* First paragraph with image on the left */
+    .para1, .para3 {
+      display: flex;
+      align-items: center;
+      margin-top: 40px;
+    }
+    .para1 img, .para3 img {
+      margin-right: 20px;
+      max-width: 200px;
+      height: auto;
+    }
+
+    /* Second paragraph with image on the right */
+    .para2, .para4 {
+      display: flex;
+      align-items: center;
+      margin-top: 40px;
+      flex-direction: row-reverse;
+    }
+    .para2 img, .para4 img {
+      margin-left: 20px;
+      max-width: 200px;
+      height: auto;
+    }
+
+    /* Styling for large first letters */
+    p span {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-right: 5px;
+    }
+
+    /* Styling for the audio player */
+    audio {
+      width: 300px;
+      display: block;
+      margin: 20px auto;
+    }
+
+    /* Styling for buttons */
+    .controls {
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    button {
+      background-color: black;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    button:hover {
+      background-color: white;
+      color: black;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Title -->
   <h1>Vous et Moi❤️</h1>
+
+  <!-- Introduction Paragraph -->
   <p class="intro">
-    <span>'V</span>ous et Moi', meaning "You and I❤️." Enjoy the playlist! 😊❤️
+    <span>'V</span>ous et Moi', meaning "You and I❤️." 
+    Oh, and I made a small playlist with some of our favorite songs to listen to while at it ml❤️. Enjoy!! 😊❤️
   </p>
 
+  <!-- Audio Player and Controls -->
   <audio id="audioPlayer" controls></audio>
   <div class="controls">
-    <button id="prevButton"><i class="fa fa-arrow-left"></i> Previous</button>
-    <button id="nextButton">Next <i class="fa fa-arrow-right"></i></button>
+    <button id="prevButton">
+      <i class="fa fa-arrow-left"></i> Previous
+    </button>
+    <button id="nextButton">
+      Next <i class="fa fa-arrow-right"></i>
+    </button>
   </div>
 
-  <script>
-   const songs = [
+<script>
+  const songs = [
       "audio/Fridayy - When It Comes To You.mp3",
       "audio/Mariah the Scientist - Always n Forever (ft. Lil Baby).mp3",
       "audio/Frank Ocean - White Ferrari.mp3",
       "audio/pink-matter-128-ytshorts.savetube.me.mp3",
       "audio/ytmp3free.cc_miguel-sure-thing-official-video-youtubemp3free.org.mp3",
       "audio/bazzi-eyes-lyrics-128-ytshorts.savetube.me.mp3",
-      "audio/api5.canehill.info - Summer Walker - Tonight [Official Audio].mp3",
-      
-  ];
+      "audio/api5.canehill.info - Summer Walker - Tonight [Official Audio].mp3"
+      ];
 
-    let currentSongIndex = 0;
-    const audioPlayer = document.getElementById("audioPlayer");
-    const prevButton = document.getElementById("prevButton");
-    const nextButton = document.getElementById("nextButton");
+  let currentSongIndex = 0;
+  const audioPlayer = document.getElementById("audioPlayer");
+  const prevButton = document.getElementById("prevButton");
+  const nextButton = document.getElementById("nextButton");
 
-    function loadSong(index) {
+  function loadSong(index) {
       if (index >= 0 && index < songs.length) {
-        audioPlayer.src = songs[index];
-        console.log("Now playing:", songs[index]);
-        audioPlayer.play();
+          audioPlayer.src = songs[index];
+          console.log("Now playing:", songs[index]); // Debugging output
+          audioPlayer.play();
       } else {
-        console.error("Invalid song index:", index);
+          console.error("Invalid song index:", index);
       }
-    }
+  }
 
-    nextButton.addEventListener("click", () => {
+  nextButton.addEventListener("click", () => {
       currentSongIndex = (currentSongIndex + 1) % songs.length;
       loadSong(currentSongIndex);
-    });
+  });
 
-    prevButton.addEventListener("click", () => {
+  prevButton.addEventListener("click", () => {
       currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
       loadSong(currentSongIndex);
-    });
+  });
 
-    audioPlayer.addEventListener("ended", () => {
+  audioPlayer.addEventListener("ended", () => {
       currentSongIndex = (currentSongIndex + 1) % songs.length;
       loadSong(currentSongIndex);
-    });
+  });
 
-    audioPlayer.onerror = () => {
-      console.error("Error loading audio file:", songs[currentSongIndex]);
-      alert("Failed to load the audio file. Please check the file path or try reloading the page.");
-    };
+  loadSong(currentSongIndex);
+</script>
 
-    loadSong(currentSongIndex);
-  </script>
+  <!-- Content omitted for brevity -->
+</body>
+</html>
+  <!-- First Paragraph with image on the left -->
+  <div class="para1">
+    <img src="images/image1.jpeg" alt="Image 1">
+    <p>
+      <span>W</span>ords aren't enough to express my gratitude to you, my love. They say happiness has 9 letters, but mine has only four❤️. You brought light into my world at a time it was dark. You gave it color and life the moment you walked in.
+      To think that you'd be the person who lit my spark again — you reignited the fire that was once dimmed off. A stranger became familiar, and now you're an irreplaceable part of my life. Such a blessing does not go unnoticed, mami❤️.
+    </p>
+  </div>
+
+  <!-- Second Paragraph with image on the right -->
+  <div class="para2">
+    <img src="images/image2.jpeg" alt="Image 2">
+    <p>
+      <span>O</span>ur first meetup on 6th October marked the genesis of this amazing life that we share. It was love at first sight when I finally laid my eyes on you. 
+      Your lethal face card, your sweet smile, and your eyes that spoke volumes—how they glittered gracefully under the afternoon rays. I got lost in them. Taking it all in took my breath away. ❤️
+      It was one hell of a view. A view that I told myself I'd love to see for the rest of my life.❤️
+    </p>
+  </div>
+
+  <!-- Third Paragraph with image on the left -->
+  <div class="para3">
+    <img src="images/image3.jpeg" alt="Image 3">
+    <p>
+      <span>I</span> fell in love with your beauty, but I fell deeper for the other things about you as the days went by. I love your smile and vow to do everything in my power to keep it on your face forever. I love your energetic yapping😂❤️—how you can talk for hours without rest, how your face lights up when you talk about things you love.
+      I love how your eyes glitter with joy and excitement, filling my heart with warmth. ❤️ I love your kindness and how you care about me every day. I love your way of thinking, how you approach certain topics, It is so attractive and one can only admire your logical way of doing things.❤️
+      You motivate me to be a better person and partner. I feel so blessed to have you, to call you mine.❤️
+    </p>
+  </div>
+
+  <!-- Fourth Paragraph with image on the right -->
+  <div class="para4">
+    <img src="images/image4.jpeg" alt="Image 4">
+    <p>
+      <span>A</span>nd yet, there's so much more to love about you. We are still learning about one another. We come from different upbringings, grew up in difffrent envrionments, we have different pasts and all of these have shaped and influenced our lives. 
+      We are still learning how to love one another. It doesn't work out quickly and perfectly like in the movies or the way we often imagine. To get to the rose flower you have to go through the thorns, nothing clicks immediately, we are gonna have compromises, arguments will be there but it's from those arguments that we learn how to love one another and to creare an understanding between one another and most importantly adapt to one another❤️. But for this to happen it has to come from the two of us. It has to come with effort and commitment from one another mami❤️.
+      Indiffrences have been there but we have always managed to solve them in a healthy way my love.❤️
+      We are young and we do not know what the future holds for us, but I always pray to God that He may keep us bound for He was the one who brought us together,(Mark 10:9❤️)I pray to God  about us , I talk to God about you. I hope you do the same😊. 
+      I might not be able to get you the finest things in life,I may noy be able to fly you out for vacations, I am not yet a rich partner but I'll always do my best to make you happy mami. You gave me a chance with your heart , all I'm asking for is a chance at life as well and I promise you I'll give my all to make sure you live the life you always wanted.❤️
+      You’ve brought endless joy and meaning to my life, and I’ll cherish every moment we share. I pray that we may stay together and not give up on each other. I'd rather have have the rainy days with you than enjoy the sunny days with someone else. 
+      Thank you for being the love of my life.❤️
+       Love, 
+      Your Boyfriend, future husband and father to our kids❤️
+      Clinton.❤️
+    </p>
+  </div>
+
 </body>
 </html>

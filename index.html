@@ -20,7 +20,6 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            overflow: hidden;
         }
         .container {
             text-align: center;
@@ -64,27 +63,21 @@
             font-family: Arial, Helvetica, sans-serif;
             font-style: italic;
         }
-        .images {
-            margin: 20px 0;
-        }
-        .images img {
-            width: 30%;
-            margin: 0 5px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Welcome!!😊❤️</h1>
         <form class="login-form" onsubmit="return validateForm(event)">
-            <!-- First Name Input -->
-            <input type="text" id="first-name" name="Hope" placeholder="Enter First Name" required>
-            <!-- Last Name Input -->
-            <input type="text" id="last-name" name="Mwalozi" placeholder="Enter Last Name" required>
-            <!-- Password Input -->
-            <input type="text" placeholder="Your Boyfriend's Birthday😊 (DD/MM/YY)" id="password" required>
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="firstName" placeholder="Enter First Name" required>
+            
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" name="lastName" placeholder="Enter Last Name" required>
+            
+            <label for="password">Boyfriend's Birthday:</label>
+            <input type="password" id="password" placeholder="DD/MM/YY 😊" required>
+            
             <input type="submit" value="Login">
         </form>
         <div class="error-message" id="error-message"></div>
@@ -94,41 +87,51 @@
         function validateForm(event) {
             event.preventDefault(); // Prevent the form from submitting
             
-            const firstName = document.getElementById("first-name").value;
-            const lastName = document.getElementById("last-name").value;
-            const password = document.getElementById("password").value;
+            const firstName = document.getElementById("first-name").value.trim();
+            const lastName = document.getElementById("last-name").value.trim();
+            const password = document.getElementById("password").value.trim();
             const errorMessage = document.getElementById("error-message");
 
             // Clear previous error message
             errorMessage.textContent = "";
 
-            // Validate first and last name
-            if (firstName === "") {
-                errorMessage.textContent = "First name cannot be empty!";
-                return false;
-            } else if (firstName.length < 2) {
+            // Check if the first name and last name are correct
+            const correctFirstName = "Hope";
+            const correctLastName = "Mwalozi";
+
+            // Validate name length
+            if (firstName.length < 2) {
                 errorMessage.textContent = "First name must be at least 2 characters long.";
                 return false;
             }
 
-            if (lastName === "") {
-                errorMessage.textContent = "Last name cannot be empty!";
-                return false;
-            } else if (lastName.length < 2) {
+            if (lastName.length < 2) {
                 errorMessage.textContent = "Last name must be at least 2 characters long.";
+                return false;
+            }
+
+            // Validate the first name
+            if (firstName !== correctFirstName) {
+                errorMessage.textContent = "Incorrect first name. Please try again!";
+                return false;
+            }
+
+            // Validate the last name
+            if (lastName !== correctLastName) {
+                errorMessage.textContent = "Incorrect last name. Please try again!";
                 return false;
             }
 
             // Password validation
             const correctPassword = "13/01/04"; // The correct password
             if (password !== correctPassword) {
-                errorMessage.textContent = "Oops, wrong password. I'm sorry but you are not my girlfriend";
+                errorMessage.textContent = "Oops, wrong password. You're not my girlfriend!!";
                 return false;
             }
 
             // If validation passes
             alert("Login Successful!!");
-            window.location.href = "mainpage.html"; //Redirect to the Main page
+            window.location.href = "mainpage.html"; // Redirect to the main page
             return true;
         }
     </script>

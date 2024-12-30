@@ -94,8 +94,8 @@
         function validateForm(event) {
             event.preventDefault(); // Prevent the form from submitting
             
-            const firstName = document.getElementById("first-name").value;
-            const lastName = document.getElementById("last-name").value;
+            const FirstName = document.getElementById("first-name").value;
+            const LastName = document.getElementById("last-name").value;
             const password = document.getElementById("password").value;
             const errorMessage = document.getElementById("error-message");
 
@@ -103,16 +103,18 @@
             errorMessage.textContent = "";
 
             // Validate first and last name
-            if (firstName === "") {
-                errorMessage.textContent = "First name cannot be empty!";
+             const correctFirstName = "Hope"; // The correct first name
+            if (firstName !== correctFirstName) {
+                errorMessage.textContent = "Wrong Name!";
                 return false;
-            } else if (firstName.length < 2) {
+            } else if (FirstName.length < 2) {
                 errorMessage.textContent = "First name must be at least 2 characters long.";
                 return false;
             }
 
-            if (lastName === "") {
-                errorMessage.textContent = "Last name cannot be empty!";
+             const correctLastName = "Mwalozi"; // The correct last name
+            if (LastName !== correctLastName) {
+                errorMessage.textContent = "Wrong Name!";
                 return false;
             } else if (lastName.length < 2) {
                 errorMessage.textContent = "Last name must be at least 2 characters long.";

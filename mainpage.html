@@ -16,6 +16,7 @@
       color: white;
       margin: 0;
       padding: 0;
+      line-height: 1.8;
     }
 
     /* Styling for the title */
@@ -29,6 +30,31 @@
     .intro {
       margin: 20px;
       font-size: 1.5em;
+    }
+
+    /* Styling for paragraphs and images */
+    section {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 20px;
+      gap: 20px;
+    }
+
+    section img {
+      width: 40%;
+      max-width: 300px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+    }
+
+    section p {
+      width: 55%;
+      font-size: 1.2em;
+    }
+
+    section:nth-child(even) {
+      flex-direction: row-reverse;
     }
 
     /* Styling for buttons */
@@ -86,106 +112,38 @@
     </button>
   </div>
 
-  <script>
-    // List of songs with verified names and paths
-    const songs = [
-      "audio/Fridayy - When It Comes To You.mp3",
-      "audio/Mariah the Scientist - Always n Forever (ft. Lil Baby).mp3",
-      "audio/Frank Ocean - White Ferrari.mp3",
-      "audio/pink-matter-128-ytshorts.savetube.me.mp3",
-      "audio/ytmp3free.cc_miguel-sure-thing-official-video-youtubemp3free.org.mp3",
-      "audio/bazzi-eyes-lyrics-128-ytshorts.savetube.me.mp3",
-      "audio/api5.canehill.info - Summer Walker - Tonight [Official Audio].mp3",
-      "audio/Lil Candypaint & Bhad Bhabie - 22 (Remix) - Bhad Bhabie.mp3",
-       "audio/Lil Durk - Internet Sensation (Official Audio).mp3" ,
-      "audio/Meek Mill - Dangerous Ft. Jeremih & PnB Rock (Championships) - HYPE.mp3",
-      "audio/Elaine - You're The One.mp3",
-      "audio/Kabza De Small & DJ Maphorisa - Asibe Happy (Official Audio) feat. Ami Faku.mp3"
-      ];
-
-    let currentSongIndex = 0;
-    const audioPlayer = document.getElementById("audioPlayer");
-    const prevButton = document.getElementById("prevButton");
-    const nextButton = document.getElementById("nextButton");
-
-    // Function to load and play a song
-    function loadSong(index) {
-      if (index >= 0 && index < songs.length) {
-        audioPlayer.src = songs[index];
-        audioPlayer.play().catch((error) => {
-          console.error("Playback error:", error);
-          alert(`Error playing the audio file: ${songs[index]}. Please check the file path.`);
-        });
-      } else {
-        console.error("Invalid song index:", index);
-      }
-    }
-
-    // Event listeners for buttons
-    nextButton.addEventListener("click", () => {
-      currentSongIndex = (currentSongIndex + 1) % songs.length; // Move to next song
-      loadSong(currentSongIndex);
-    });
-
-    prevButton.addEventListener("click", () => {
-      currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length; // Move to previous song
-      loadSong(currentSongIndex);
-    });
-
-    // Automatically play the next song when the current one ends
-    audioPlayer.addEventListener("ended", () => {
-      currentSongIndex = (currentSongIndex + 1) % songs.length;
-      loadSong(currentSongIndex);
-    });
-
-    // Load the first song initially
-    loadSong(currentSongIndex);
-  </script>
-  
-  <!-- First Paragraph with image on the left -->
-  <div class="para1">
-    <img src="images/image1.jpeg" alt="Image 1">
+  <!-- Sections with paragraphs and images -->
+  <section>
+    <img src="images/image1.jpeg" alt="My favorite photo of us😊❤️">
     <p>
       <span>W</span>ords aren't enough to express my gratitude to you, my love. They say happiness has 9 letters, but mine has only four❤️. You brought light into my world at a time it was dark. You gave it color and life the moment you walked in.
       To think that you'd be the person who lit my spark again — you reignited the fire that was once dimmed off. A stranger became familiar, and now you're an irreplaceable part of my life. Such a blessing does not go unnoticed, mami❤️.
     </p>
-  </div>
+  </section>
 
-  <!-- Second Paragraph with image on the right -->
-  <div class="para2">
-    <img src="images/image2.jpeg" alt="Image 2">
+  <section>
+    <img src="images/image2.jpeg" alt="😂😂❤️">
     <p>
       <span>O</span>ur first meetup on 6th October marked the genesis of this amazing life that we share. It was love at first sight when I finally laid my eyes on you. 
       Your lethal face card, your sweet smile, and your eyes that spoke volumes—how they glittered gracefully under the afternoon rays. I got lost in them. Taking it all in took my breath away. ❤️
       It was one hell of a view. A view that I told myself I'd love to see for the rest of my life.❤️
     </p>
-  </div>
+  </section>
 
-  <!-- Third Paragraph with image on the left -->
-  <div class="para3">
-    <img src="images/image3.jpeg" alt="Image 3">
+  <section>
+    <img src="images/image3.jpeg" alt="You looked cute here ngl❤️">
     <p>
       <span>I</span> fell in love with your beauty, but I fell deeper for the other things about you as the days went by. I love your smile and vow to do everything in my power to keep it on your face forever. I love your energetic yapping😂❤️—how you can talk for hours without rest, how your face lights up when you talk about things you love.
-      I love how your eyes glitter with joy and excitement, filling my heart with warmth. ❤️ I love your kindness and how you care about me every day. I love your way of thinking, how you approach certain topics, It is so attractive and one can only admire your logical way of doing things.❤️
-      You motivate me to be a better person and partner. I feel so blessed to have you, to call you mine.❤️
+      I love how your eyes glitter with joy and excitement, filling my heart with warmth. ❤️ I love your kindness and how you care about me every day. I love your way of thinking, how you approach certain topics. It is so attractive and one can only admire your logical way of doing things.❤️
     </p>
-  </div>
+  </section>
 
-  <!-- Fourth Paragraph with image on the right -->
-  <div class="para4">
-    <img src="images/image4.jpeg" alt="Image 4">
+  <section>
+    <img src="images/image4.jpeg" alt="What was you tweaking off😂😂❤️">
     <p>
-      <span>A</span>nd yet, there's so much more to love about you. We are still learning about one another. We come from different upbringings, grew up in difffrent envrionments, we have different pasts and all of these have shaped and influenced our lives. 
-      We are still learning how to love one another. It doesn't work out quickly and perfectly like in the movies or the way we often imagine. To get to the rose flower you have to go through the thorns, nothing clicks immediately, we are gonna have compromises, arguments will be there but it's from those arguments that we learn how to love one another and to creare an understanding between one another and most importantly adapt to one another❤️. But for this to happen it has to come from the two of us. It has to come with effort and commitment from one another mami❤️.
-      Indiffrences have been there but we have always managed to solve them in a healthy way my love.❤️
-      We are young and we do not know what the future holds for us, but I always pray to God that He may keep us bound for He was the one who brought us together,(Mark 10:9❤️)I pray to God  about us , I talk to God about you. I hope you do the same😊. 
-      I might not be able to get you the finest things in life,I may noy be able to fly you out for vacations, I am not yet a rich partner but I'll always do my best to make you happy mami. You gave me a chance with your heart , all I'm asking for is a chance at life as well and I promise you I'll give my all to make sure you live the life you always wanted.❤️
-      You’ve brought endless joy and meaning to my life, and I’ll cherish every moment we share. I pray that we may stay together and not give up on each other. I'd rather have have the rainy days with you than enjoy the sunny days with someone else. 
-      Thank you for being the love of my life.❤️
-      Always n' forever❤️, 
-      Your Boyfriend, future husband and father to our kids(tihihi🤭)❤️
-      Clinton.❤️
+      <span>A</span>nd yet, there's so much more to love about you. We are still learning about one another. We come from different upbringings, grew up in different environments, and have different pasts, all of which have shaped us.
+      ... (Text Continues)
     </p>
-  </div>
+  </section>
 </body>
 </html>

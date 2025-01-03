@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vous Et Moi❤️</title>
+    <title>Our First Valentines Together ❤️</title>
     <!-- Favicon -->
-    <link rel="icon" href="images/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="c:\Users\Njambi\Downloads\360_F_999314543_KxCLlafnV9O1b8Ux4OT1c2ru6LuH8vsZ.jpg" type="image/x-icon">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -13,17 +13,19 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Playfair Display', serif;
-            background-color: pink;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color:red;
             color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            overflow: hidden;
         }
         .container {
             text-align: center;
             background: #fff;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -40,22 +42,23 @@
         .login-form input[type="text"], 
         .login-form input[type="password"] {
             width: 100%;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
         .login-form input[type="submit"] {
-            background-color: #ff69b4;
+            background-color:red;
             color: white;
             border: none;
-            padding: 10px 15px;
+            padding: 15px 20px;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
         }
         .login-form input[type="submit"]:hover {
-            background-color: #ff1493;
+            background-color: #ff1414;
         }
         .error-message {
             color: red;
@@ -63,21 +66,33 @@
             font-family: Arial, Helvetica, sans-serif;
             font-style: italic;
         }
+        .images {
+            margin: 20px 0;
+        }
+        .images img {
+            width: 30%;
+            margin: 0 5px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+          /* Media Query for larger screens */
+    @media (min-width: 768px) {
+        .container {
+            max-width: 600px;
+        }
+    }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome!!😊❤️</h1>
+        <h1>Welcome Once Again,it's good to see you😊❤️</h1>
         <form class="login-form" onsubmit="return validateForm(event)">
-            <label for="first-name">First Name:</label>
-            <input type="text" id="first-name" name="firstName" placeholder="Enter First Name" required>
-            
-            <label for="last-name">Last Name:</label>
-            <input type="text" id="last-name" name="lastName" placeholder="Enter Last Name" required>
-            
-            <label for="password">Your Boyfriend's Birthday😊❤️:</label>
-            <input type="password" id="password" placeholder="DD/MM/YY 😊" required>
-            
+            <!-- First Name Input -->
+            <input type="text" id="first-name" name="Hope" placeholder="Enter First Name" required>
+            <!-- Last Name Input -->
+            <input type="text" id="last-name" name="Mwalozi" placeholder="Enter Last Name" required>
+            <!-- Password Input -->
+            <input type="text" placeholder="Valentines' Date today 😊❤️"id="password" required>
             <input type="submit" value="Login">
         </form>
         <div class="error-message" id="error-message"></div>
@@ -87,51 +102,41 @@
         function validateForm(event) {
             event.preventDefault(); // Prevent the form from submitting
             
-            const firstName = document.getElementById("first-name").value.trim();
-            const lastName = document.getElementById("last-name").value.trim();
-            const password = document.getElementById("password").value.trim();
+            const firstName = document.getElementById("first-name").value;
+            const lastName = document.getElementById("last-name").value;
+            const password = document.getElementById("password").value;
             const errorMessage = document.getElementById("error-message");
 
             // Clear previous error message
             errorMessage.textContent = "";
 
-            // Check if the first name and last name are correct
-            const correctFirstName = "Hope";
-            const correctLastName = "Mwalozi";
-
-            // Validate name length
-            if (firstName.length < 2) {
+            // Validate first and last name
+            if (firstName === "") {
+                errorMessage.textContent = "First name cannot be empty!";
+                return false;
+            } else if (firstName.length < 2) {
                 errorMessage.textContent = "First name must be at least 2 characters long.";
                 return false;
             }
 
-            if (lastName.length < 2) {
+            if (lastName === "") {
+                errorMessage.textContent = "Last name cannot be empty!";
+                return false;
+            } else if (lastName.length < 2) {
                 errorMessage.textContent = "Last name must be at least 2 characters long.";
-                return false;
-            }
-
-            // Validate the first name
-            if (firstName !== correctFirstName) {
-                errorMessage.textContent = "Incorrect first name. Please try again!";
-                return false;
-            }
-
-            // Validate the last name
-            if (lastName !== correctLastName) {
-                errorMessage.textContent = "Incorrect last name. Please try again!";
                 return false;
             }
 
             // Password validation
             const correctPassword = "13/01/04"; // The correct password
             if (password !== correctPassword) {
-                errorMessage.textContent = "Oops, wrong password. You're not my girlfriend!!";
+                errorMessage.textContent = "Oops, wrong password. I'm sorry but you are not my girlfriend";
                 return false;
             }
 
             // If validation passes
-            alert("Login Successful😊!!");
-            window.location.href = "mainpage.html"; // Redirect to the main page
+            alert("Login Successful!!");
+            window.location.href = "mainpage.html"; //Redirect to the Main page
             return true;
         }
     </script>

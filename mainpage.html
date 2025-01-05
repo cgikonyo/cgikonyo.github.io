@@ -8,137 +8,136 @@
   <title>Our First valentines Together❤️</title>
   <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    /* General page styling */
-    body {
-      font-family: 'Lucida Calligraphy', cursive;
-      background-color: red;
-      color: white;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+  /* General page styling */
+  body {
+    font-family: 'Lucida Calligraphy', cursive;
+    background-color: red;
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
 
-    /* Styling for the title */
-    h1 {
-      text-align: center;
-      font-size: 3em;
-      margin-top: 20px;
-    }
+  /* Styling for the title */
+  h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-top: 20px;
+  }
 
-    /* Styling for the introduction paragraph */
-    .intro {
-      margin: 20px;
-      font-size: 1.5em;
-    }
+  /* Styling for the introduction paragraph */
+  .intro {
+    margin: 10px 20px;
+    font-size: 1.5em;
+  }
 
-    /* Styling for the paragraphs */
-    p {
-      font-size: 1.2em;
-      line-height: 1.6;
-      margin: 20px;
-      text-align: justify;
-    }
+  /* General paragraph styling */
+  p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin: 10px 20px; /* Reduced margin for better spacing */
+    text-align: justify;
+  }
 
-    /* First paragraph  */
-    .para1, .para3 {
-      display: flex;
-      align-items: center;
-      margin-top: 40px;
-    }
-    
-    /* Second paragraph  */
-    .para2, .para4 {
-      display: flex;
-      align-items: center;
-      margin-top: 40px;
-      flex-direction: row-reverse;
-    }
-   
+  /* First paragraph */
+  .para1, .para3 {
+    display: flex;
+    align-items: center;
+    margin-top: 20px; /* Reduced margin to reduce spacing */
+  }
+  
+  /* Second paragraph */
+  .para2, .para4 {
+    display: flex;
+    align-items: center;
+    margin-top: 20px; /* Reduced margin */
+    flex-direction: row-reverse;
+  }
 
-    /* Styling for large first letters */
-    p span {
-      font-size: 2.5em;
-      font-weight: bold;
-      margin-right: 5px;
-    }
+  /* Styling for large first letters */
+  p span {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-right: 5px;
+  }
 
-    /* Styling for the audio player */
-    audio {
-      width: 300px;
-      display: block;
-      margin: 20px auto;
-    }
+  /* Styling for the audio player */
+  audio {
+    width: 300px;
+    display: block;
+    margin: 20px auto;
+  }
 
-    /* Styling for buttons */
-    .controls {
-      text-align: center;
-      margin: 10px 0;
-    }
+  /* Styling for buttons */
+  .controls {
+    text-align: center;
+    margin: 10px 0;
+  }
 
-    button {
-      background-color: red;
-      color: white;
-      border: 2px solid white;
-      border-radius: 5px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
+  button {
+    background-color: red;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
 
-    button:hover {
-      background-color: red;
-      color: white;
-    }
+  button:hover {
+    background-color: red;
+    color: white;
+  }
 
-    /* Styling for the question container */
-    .question-container {
-      text-align: center;
-      margin-top: 50px;
-      padding: 20px;
-      background-color: white;
-      color: red;
-      border-radius: 15px;
-      width: 80%;
-      max-width: 400px;
-      margin: 50px auto;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      font-family: 'Lucida Calligraphy', cursive;
-    }
+  /* Styling for the question container */
+  .question-container {
+    text-align: center;
+    margin-top: 30px; /* Adjusted for better spacing */
+    padding: 20px;
+    background-color: white;
+    color: red;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 400px;
+    margin: 30px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: 'Lucida Calligraphy', cursive;
+  }
 
-    /* Styling for the buttons */
-    .button-container {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
+  /* Styling for the buttons */
+  .button-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
 
-    #yesButton,
-    #noButton {
-      background-color: red;
-      color: white;
-      border: 2px solid white;
-      border-radius: 5px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+  #yesButton,
+  #noButton {
+    background-color: red;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
 
-    #yesButton:hover {
-      background-color: white;
-      color: red;
-      border: 2px solid red;
-    }
+  #yesButton:hover {
+    background-color: white;
+    color: red;
+    border: 2px solid red;
+  }
 
-    /* Styling for the "No" button animation */
-    #noButton {
-      position: relative;
-    }
-  </style>
+  /* Styling for the "No" button animation */
+  #noButton {
+    position: relative;
+  }
+</style>
 </head>
 <body>
 

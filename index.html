@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our First Valentines Together ❤️</title>
     <!-- Favicon -->
-    <link rel="icon" href="c:\Users\Njambi\Downloads\360_F_999314543_KxCLlafnV9O1b8Ux4OT1c2ru6LuH8vsZ.jpg" type="image/x-icon">
+    <link rel="icon" href="https://example.com/favicon.jpg" type="image/x-icon">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -69,6 +69,11 @@
             margin-top: 10px;
             font-family: Arial, Helvetica, sans-serif;
             font-style: italic;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out; /* Smooth transition */
+        }
+        .error-message.show {
+            opacity: 1; /* Show error message */
         }
         .images {
             margin: 20px 0;
@@ -94,13 +99,13 @@
         <form class="login-form" onsubmit="return validateForm(event)">
             <!-- First Name Input -->
             <label for="first-name">First Name</label>
-            <input type="text" id="first-name" name="Hope" placeholder="Enter First Name" aria-label="Enter First Name" required>
+            <input type="text" id="first-name" name="Hope" placeholder="Enter First Name" aria-label="Enter First Name" aria-describedby="error-message" required>
             <!-- Last Name Input -->
             <label for="last-name">Last Name</label>
-            <input type="text" id="last-name" name="Mwalozi" placeholder="Enter Last Name" aria-label="Enter Last Name" required>
+            <input type="text" id="last-name" name="Mwalozi" placeholder="Enter Last Name" aria-label="Enter Last Name" aria-describedby="error-message" required>
             <!-- Password Input -->
             <label for="password">Password</label>
-            <input type="text" id="password" placeholder="Valentines' Date today 😊❤️" aria-label="Enter Valentines Date" required>
+            <input type="password" id="password" placeholder="Valentines' Date today 😊❤️" aria-label="Enter Valentines Date" aria-describedby="error-message" required>
             <input type="submit" value="Login">
         </form>
         <div class="error-message" id="error-message"></div>
@@ -110,41 +115,35 @@
         function validateForm(event) {
             event.preventDefault(); // Prevent the form from submitting
             
-            const firstName = document.getElementById("first-name").value;
-            const lastName = document.getElementById("last-name").value;
-            const password = document.getElementById("password").value;
+            const firstName = document.getElementById("first-name").value.trim();
+            const lastName = document.getElementById("last-name").value.trim();
+            const password = document.getElementById("password").value.trim();
             const errorMessage = document.getElementById("error-message");
 
             // Clear previous error message
             errorMessage.textContent = "";
+            errorMessage.classList.remove("show");
 
-            // Validate first and last name
-            if (firstName === "") {
-                errorMessage.textContent = "First name cannot be empty!";
-                return false;
-            } else if (firstName.length < 2) {
-                errorMessage.textContent = "First name must be at least 2 characters long.";
-                return false;
-            }
-
-            if (lastName === "") {
-                errorMessage.textContent = "Last name cannot be empty!";
-                return false;
-            } else if (lastName.length < 2) {
-                errorMessage.textContent = "Last name must be at least 2 characters long.";
+            // Validate first name and last name
+            const correctFirstName = "Hope"; // Correct first name
+            const correctLastName = "Mwalozi"; // Correct last name
+            if (firstName !== correctFirstName || lastName !== correctLastName) {
+                alert("Oops, you are not my girlfriend");
                 return false;
             }
 
             // Password validation
-            const correctPassword = "13/01/04"; // The correct password
+            const correctPassword = "14/02/25"; // The correct password
             if (password !== correctPassword) {
                 errorMessage.textContent = "Oops, wrong password. I'm sorry but you are not my girlfriend";
+                errorMessage.classList.add("show");
                 return false;
             }
 
             // If validation passes
-            alert("Login Successful!!");
-            window.location.href = "mainpage.html"; // Redirect to the main page
+            if (confirm("Login Successful! Ready to proceed?")) {
+                window.location.href = "mainpage.html"; // Redirect to the main page
+            }
             return true;
         }
     </script>
